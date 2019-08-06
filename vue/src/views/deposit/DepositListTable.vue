@@ -12,13 +12,13 @@
         <!-- pending -->
         <b-dropdown v-if="data.item.Confirm == 'not'" size="sm" id="ddown_secondary" variant="secondary" class="m-1" text="미확인">        
           <b-dropdown-item @click="onClick(data.item.Id,'not','not')">미확인</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'pending','not')">대기</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">승인</b-dropdown-item>
+          <b-dropdown-item @click="onClick(data.item.Id,'pending','not')">보류</b-dropdown-item>
+          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">확인</b-dropdown-item>
         </b-dropdown>        
         <b-dropdown v-if="data.item.Confirm == 'pending'" size="sm" id="ddown_warning" variant="warning" class="m-1" text="대기중">        
           <b-dropdown-item @click="onClick(data.item.Id,'not','not')">미확인</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'pending','not')">대기</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">승인</b-dropdown-item>
+          <b-dropdown-item @click="onClick(data.item.Id,'pending','not')">보류</b-dropdown-item>
+          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">확인</b-dropdown-item>
         </b-dropdown>
       </template>
     </b-table>

@@ -8,16 +8,31 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
+import store from './store'
+import VueApexCharts from 'vue-apexcharts'
+import VueGoogleCharts from 'vue-google-charts'
+import moment from 'moment'
 
 // todo
 // cssVars()
+Vue.use(axios)
+Vue.prototype.$axios = axios
 
 Vue.use(BootstrapVue)
+
+Vue.use(VueApexCharts)
+Vue.component('apexchart', VueApexCharts)
+Vue.use(VueGoogleCharts)
+
+Vue.use(moment)
+Vue.prototype.$moment = moment
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: {
     App

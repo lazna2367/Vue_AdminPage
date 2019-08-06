@@ -10,16 +10,7 @@
       </template> -->          
       <template slot="Confirm" slot-scope="data">  
         <!-- pending -->
-        <b-dropdown v-if="data.item.Confirm == 'not'" size="sm" id="ddown_secondary" variant="secondary" class="m-1" text="미확인">        
-          <b-dropdown-item @click="onClick(data.item.Id,'not','not')">미확인</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'pending','not')">대기</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">승인</b-dropdown-item>
-        </b-dropdown>        
-        <b-dropdown v-if="data.item.Confirm == 'pending'" size="sm" id="ddown_warning" variant="warning" class="m-1" text="대기중">        
-          <b-dropdown-item @click="onClick(data.item.Id,'not','not')">미확인</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'pending','not')">대기</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">승인</b-dropdown-item>
-        </b-dropdown>
+        <b-button block variant="success">처리완료</b-button>
       </template>
     </b-table>
     
@@ -100,36 +91,6 @@ export default {
     },
     getRowCount: function () {
       return this.items.length
-    },
-    onClick(Arg_Id, Arg_confirm , Arg_complete){
-      //console.log('돈다돌아' + Id + ' / ' +  confirm + ' / ' + complete);      
-      this.Id = Arg_Id
-      this.confirm = Arg_confirm
-      this.complete = Arg_complete
-
-      const URI = 'http://172.30.1.46:8091/depositUpdate'
-      this.$axios.post(`${URI}`,
-        {
-          "Id" : this.Id,
-          "confirm" : this.confirm,
-          "complete" : this.complete
-        }
-      )
-      .then((result) => {
-        console.log(result)               
-          const baseURI = 'http://172.30.1.46:8091/depositList'
-          this.$axios.post(`${baseURI}`)
-          .then((result) => {            
-            console.log(result)    
-            if(result.data != null){
-              this.tableData = result.data      
-            } else if (result.data == null){
-              this.tableData = []
-            }
-          })
-
-        //this.axiosload()
-      })
     }
   }
 }

@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// Containers
-const DefaultContainer = () => import('@/containers/DefaultContainer')
+// // Containers
+ const DefaultContainer = () => import('@/containers/DefaultContainer')
 
-// Views
-const Dashboard = () => import('@/views/Dashboard')
+// // Views
+// const Dashboard = () => import('@/views/Dashboard')
 
-const Colors = () => import('@/views/theme/Colors')
-const Typography = () => import('@/views/theme/Typography')
+// const Colors = () => import('@/views/theme/Colors')
+// const Typography = () => import('@/views/theme/Typography')
 
-const Charts = () => import('@/views/Charts')
-const Widgets = () => import('@/views/Widgets')
+// const Charts = () => import('@/views/Charts')
+// const Widgets = () => import('@/views/Widgets')
 
 // Views - Components
 const Cards = () => import('@/views/base/Cards')
@@ -31,32 +31,46 @@ const Popovers = () => import('@/views/base/Popovers')
 const ProgressBars = () => import('@/views/base/ProgressBars')
 const Tooltips = () => import('@/views/base/Tooltips')
 
-// Views - Buttons
-const StandardButtons = () => import('@/views/buttons/StandardButtons')
-const ButtonGroups = () => import('@/views/buttons/ButtonGroups')
-const Dropdowns = () => import('@/views/buttons/Dropdowns')
-const BrandButtons = () => import('@/views/buttons/BrandButtons')
+// // Views - Buttons
+// const StandardButtons = () => import('@/views/buttons/StandardButtons')
+// const ButtonGroups = () => import('@/views/buttons/ButtonGroups')
+// const Dropdowns = () => import('@/views/buttons/Dropdowns')
+// const BrandButtons = () => import('@/views/buttons/BrandButtons')
 
-// Views - Icons
-const Flags = () => import('@/views/icons/Flags')
-const FontAwesome = () => import('@/views/icons/FontAwesome')
-const SimpleLineIcons = () => import('@/views/icons/SimpleLineIcons')
-const CoreUIIcons = () => import('@/views/icons/CoreUIIcons')
+// // Views - Icons
+// const Flags = () => import('@/views/icons/Flags')
+// const FontAwesome = () => import('@/views/icons/FontAwesome')
+// const SimpleLineIcons = () => import('@/views/icons/SimpleLineIcons')
+// const CoreUIIcons = () => import('@/views/icons/CoreUIIcons')
 
-// Views - Notifications
-const Alerts = () => import('@/views/notifications/Alerts')
-const Badges = () => import('@/views/notifications/Badges')
-const Modals = () => import('@/views/notifications/Modals')
+// // Views - Notifications
+// const Alerts = () => import('@/views/notifications/Alerts')
+// const Badges = () => import('@/views/notifications/Badges')
+// const Modals = () => import('@/views/notifications/Modals')
 
-// Views - Pages
-const Page404 = () => import('@/views/pages/Page404')
-const Page500 = () => import('@/views/pages/Page500')
-const Login = () => import('@/views/pages/Login')
-const Register = () => import('@/views/pages/Register')
+// // Views - Pages
+// const Page404 = () => import('@/views/pages/Page404')
+// const Page500 = () => import('@/views/pages/Page500')
+// const Login = () => import('@/views/pages/Login')
+// const Register = () => import('@/views/pages/Register')
 
-// Users
-const Users = () => import('@/views/users/Users')
-const User = () => import('@/views/users/User')
+// // Users
+// const Users = () => import('@/views/users/Users')
+// const User = () => import('@/views/users/User')
+
+//추가
+const LoginPage = () => import('@/views/deposit/LoginPage')
+const DepositList = () => import('@/views/deposit/DepositList')
+const DepositCheckList = () => import('@/views/deposit/DepositCheckList')
+const DepositConfirmList = () => import('@/views/deposit/DepositConfirmList')
+
+const WithdrawList = () => import('@/views/withdraw/WithdrawList')
+const WithdrawCheckList = () => import('@/views/withdraw/WithdrawCheckList')
+const WithdrawConfirmList = () => import('@/views/withdraw/WithdrawConfirmList')
+const MainPage = () => import('@/views/deposit/MainPage')
+
+
+const VueChartJS = () => import('@/views/Chart/VueChartJS')
 
 Vue.use(Router)
 
@@ -67,64 +81,68 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/dashboard',
+      redirect: '/mainpage',
       name: 'Home',
       component: DefaultContainer,
       children: [
-        {
-          path: 'dashboard',
-          name: 'Dashboard',
-          component: Dashboard
-        },
-        {
-          path: 'theme',
-          redirect: '/theme/colors',
-          name: 'Theme',
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: 'colors',
-              name: 'Colors',
-              component: Colors
-            },
-            {
-              path: 'typography',
-              name: 'Typography',
-              component: Typography
-            }
-          ]
-        },
-        {
-          path: 'charts',
-          name: 'Charts',
-          component: Charts
-        },
-        {
-          path: 'widgets',
-          name: 'Widgets',
-          component: Widgets
-        },
-        {
-          path: 'users',
-          meta: { label: 'Users'},
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: '',
-              component: Users,
-            },
-            {
-              path: ':id',
-              meta: { label: 'User Details'},
-              name: 'User',
-              component: User,
-            },
-          ]
-        },
+        // {
+        //   path: 'dashboard',
+        //   name: 'Dashboard',
+        //   component: Dashboard
+        // },
+        
+        // {
+        //   path: 'theme',
+        //   redirect: '/theme/colors',
+        //   name: 'Theme',
+        //   component: {
+        //     render (c) { return c('router-view') }
+        //   },
+        //   children: [
+        //     {
+        //       path: 'colors',
+        //       name: 'Colors',
+        //       component: Colors
+        //     },
+
+            
+
+        //     {
+        //       path: 'typography',
+        //       name: 'Typography',
+        //       component: Typography
+        //     }
+        //   ]
+        // },
+        // {
+        //   path: 'charts',
+        //   name: 'Charts',
+        //   component: Charts
+        // },
+        // {
+        //   path: 'widgets',
+        //   name: 'Widgets',
+        //   component: Widgets
+        // },
+        // {
+        //   path: 'users',
+        //   meta: { label: 'Users'},
+        //   component: {
+        //     render (c) { return c('router-view') }
+        //   },
+        //   children: [
+        //     {
+        //       path: '',
+        //       component: Users,
+        //     },
+        //     {
+        //       path: ':id',
+        //       meta: { label: 'User Details'},
+        //       name: 'User',
+        //       component: User,
+        //     },
+        //   ]
+        // },
         {
           path: 'base',
           redirect: '/base/cards',
@@ -215,122 +233,174 @@ export default new Router({
             }
           ]
         },
+        // {
+        //   path: 'buttons',
+        //   redirect: '/buttons/standard-buttons',
+        //   name: 'Buttons',
+        //   component: {
+        //     render (c) { return c('router-view') }
+        //   },
+        //   children: [
+        //     {
+        //       path: 'standard-buttons',
+        //       name: 'Standard Buttons',
+        //       component: StandardButtons
+        //     },
+        //     {
+        //       path: 'button-groups',
+        //       name: 'Button Groups',
+        //       component: ButtonGroups
+        //     },
+        //     {
+        //       path: 'dropdowns',
+        //       name: 'Dropdowns',
+        //       component: Dropdowns
+        //     },
+        //     {
+        //       path: 'brand-buttons',
+        //       name: 'Brand Buttons',
+        //       component: BrandButtons
+        //     }
+        //   ]
+        // },
+        // {
+        //   path: 'icons',
+        //   redirect: '/icons/font-awesome',
+        //   name: 'Icons',
+        //   component: {
+        //     render (c) { return c('router-view') }
+        //   },
+        //   children: [
+        //     {
+        //       path: 'coreui-icons',
+        //       name: 'CoreUI Icons',
+        //       component: CoreUIIcons
+        //     },
+        //     {
+        //       path: 'flags',
+        //       name: 'Flags',
+        //       component: Flags
+        //     },
+        //     {
+        //       path: 'font-awesome',
+        //       name: 'Font Awesome',
+        //       component: FontAwesome
+        //     },
+        //     {
+        //       path: 'simple-line-icons',
+        //       name: 'Simple Line Icons',
+        //       component: SimpleLineIcons
+        //     }
+        //   ]
+        // },
+        // {
+        //   path: 'notifications',
+        //   redirect: '/notifications/alerts',
+        //   name: 'Notifications',
+        //   component: {
+        //     render (c) { return c('router-view') }
+        //   },
+        //   children: [
+        //     {
+        //       path: 'alerts',
+        //       name: 'Alerts',
+        //       component: Alerts
+        //     },
+        //     {
+        //       path: 'badges',
+        //       name: 'Badges',
+        //       component: Badges
+        //     },
+        //     {
+        //       path: 'modals',
+        //       name: 'Modals',
+        //       component: Modals
+        //     }
+        //   ]
+        // }
+        //,
+        // ++
         {
-          path: 'buttons',
-          redirect: '/buttons/standard-buttons',
-          name: 'Buttons',
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: 'standard-buttons',
-              name: 'Standard Buttons',
-              component: StandardButtons
-            },
-            {
-              path: 'button-groups',
-              name: 'Button Groups',
-              component: ButtonGroups
-            },
-            {
-              path: 'dropdowns',
-              name: 'Dropdowns',
-              component: Dropdowns
-            },
-            {
-              path: 'brand-buttons',
-              name: 'Brand Buttons',
-              component: BrandButtons
-            }
-          ]
+          path: '/depositlist',
+          name: 'DepositList',
+          component: DepositList
         },
         {
-          path: 'icons',
-          redirect: '/icons/font-awesome',
-          name: 'Icons',
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: 'coreui-icons',
-              name: 'CoreUI Icons',
-              component: CoreUIIcons
-            },
-            {
-              path: 'flags',
-              name: 'Flags',
-              component: Flags
-            },
-            {
-              path: 'font-awesome',
-              name: 'Font Awesome',
-              component: FontAwesome
-            },
-            {
-              path: 'simple-line-icons',
-              name: 'Simple Line Icons',
-              component: SimpleLineIcons
-            }
-          ]
+          path: '/depositchecklist',
+          name: 'DepositCheckList',
+          component: DepositCheckList
         },
         {
-          path: 'notifications',
-          redirect: '/notifications/alerts',
-          name: 'Notifications',
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: 'alerts',
-              name: 'Alerts',
-              component: Alerts
-            },
-            {
-              path: 'badges',
-              name: 'Badges',
-              component: Badges
-            },
-            {
-              path: 'modals',
-              name: 'Modals',
-              component: Modals
-            }
-          ]
+          path: '/depositconfirmlist',
+          name: 'DepositConfirmList',
+          component: DepositConfirmList
+        },
+        {
+          path: '/withdrawlist',
+          name: 'WithdrawList',
+          component: WithdrawList
+        },
+        {
+          path: '/withdrawchecklist',
+          name: 'WithdrawCheckList',
+          component: WithdrawCheckList
+        },
+        {
+          path: '/withdrawconfirmlist',
+          name: 'WithdrawConfirmList',
+          component: WithdrawConfirmList
+        },
+        {
+          path: '/mainpage',
+          name: 'MainPage',
+          component: MainPage
+        },
+        {
+          path: '/chartjs',
+          name: 'VueChartJS',
+          component: VueChartJS
         }
+
       ]
     },
+
+    // {
+    //   path: '/pages',
+    //   redirect: '/pages/404',
+    //   name: 'Pages',
+    //   component: {
+    //     render (c) { return c('router-view') }
+    //   },
+    //   children: [
+    //     {
+    //       path: '404',
+    //       name: 'Page404',
+    //       component: Page404
+    //     },
+    //     {
+    //       path: '500',
+    //       name: 'Page500',
+    //       component: Page500
+    //     },
+    //     {
+    //       path: 'login',
+    //       name: 'Login',
+    //       component: Login
+    //     },
+    //     {
+    //       path: 'register',
+    //       name: 'Register',
+    //       component: Register
+    //     }
+    //   ]
+    // },
+
     {
-      path: '/pages',
-      redirect: '/pages/404',
-      name: 'Pages',
-      component: {
-        render (c) { return c('router-view') }
-      },
-      children: [
-        {
-          path: '404',
-          name: 'Page404',
-          component: Page404
-        },
-        {
-          path: '500',
-          name: 'Page500',
-          component: Page500
-        },
-        {
-          path: 'login',
-          name: 'Login',
-          component: Login
-        },
-        {
-          path: 'register',
-          name: 'Register',
-          component: Register
-        }
-      ]
-    }
+      path: '/LoginPage',
+      name: 'LoginPage',
+      component: LoginPage
+    },
+
+
   ]
 })

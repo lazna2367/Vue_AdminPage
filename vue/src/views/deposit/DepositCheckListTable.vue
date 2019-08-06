@@ -8,17 +8,17 @@
       <!-- <template slot="status" slot-scope="data">        
         <b-badge :variant="getBadge(data.item.status)">{{data.item.status}}</b-badge>                
       </template> -->          
-      <template slot="Confirm" slot-scope="data">  
+      <template slot="Complete" slot-scope="data">  
         <!-- pending -->
-        <b-dropdown v-if="data.item.Confirm == 'not'" size="sm" id="ddown_secondary" variant="secondary" class="m-1" text="미확인">        
-          <b-dropdown-item @click="onClick(data.item.Id,'not','not')">미확인</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'pending','not')">대기</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">승인</b-dropdown-item>
+        <b-dropdown v-if="data.item.Complete == 'not'" size="sm" id="ddown_secondary" variant="secondary" class="m-1" text="미확인">        
+          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">미승인</b-dropdown-item>
+          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','pending')">보류</b-dropdown-item>
+          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','completed')">승인</b-dropdown-item>
         </b-dropdown>        
-        <b-dropdown v-if="data.item.Confirm == 'pending'" size="sm" id="ddown_warning" variant="warning" class="m-1" text="대기중">        
-          <b-dropdown-item @click="onClick(data.item.Id,'not','not')">미확인</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'pending','not')">대기</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">승인</b-dropdown-item>
+        <b-dropdown v-if="data.item.Complete == 'pending'" size="sm" id="ddown_warning" variant="warning" class="m-1" text="대기중">        
+          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">미승인</b-dropdown-item>
+          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','pending')">보류</b-dropdown-item>
+          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','completed')">승인</b-dropdown-item>
         </b-dropdown>
       </template>
     </b-table>
@@ -117,13 +117,13 @@ export default {
       )
       .then((result) => {
         console.log(result)               
-          const baseURI = 'http://172.30.1.46:8091/depositList'
+          const baseURI = 'http://172.30.1.46:8091/depositCheckList'
           this.$axios.post(`${baseURI}`)
           .then((result) => {            
-            console.log(result)    
-            if(result.data != null){
+            console.log(result)  
+            if(result.data != null) {
               this.tableData = result.data      
-            } else if (result.data == null){
+            }else if(result.data == null){
               this.tableData = []
             }
           })
