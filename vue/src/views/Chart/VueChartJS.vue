@@ -44,35 +44,6 @@ import BubbleChart from './BubbleChart'
 import Reactive from './Reactive'
 import GChart from './GoogleCharts'
 
-var date = new Date(); 
-var year = date.getFullYear(); 
-var month = new String(date.getMonth()+1); 
-var day = new String(date.getDate()); 
-
-var d1 = new String(date.getDate()-1); 
-var d2 = new String(date.getDate()-2); 
-var d3 = new String(date.getDate()-3); 
-var d4 = new String(date.getDate()-4); 
-var d5 = new String(date.getDate()-5); 
-var d6 = new String(date.getDate()-6); 
-
-var m_today = this.$moment(new Date()).format('YYYYMMDD')
-
-if(month.length == 1){ 
-  month = "0" + month; 
-} 
-if(day.length == 1){ 
-  day = "0" + day; 
-} 
-
-var today = year + "/" + month + "/" + day
-var dayago = year + "/" + month + "/" + d1
-var twodayago = year + "/" + month + "/" + d2
-var threedayago = year + "/" + month + "/" + d3
-var fourdayago = year + "/" + month + "/" + d4
-var fivedayago = year + "/" + month + "/" + d5
-var sixdayago = year + "/" + month + "/" + d6
-
 export default {
     data(){
         return{
@@ -85,23 +56,23 @@ export default {
           SixDayAgo:[],
 
           chartOptions: {
-          chart: {
-            id: 'vuechart-example'
-          },
-          xaxis: {
-            categories: [sixdayago, fivedayago, fourdayago, threedayago, twodayago, dayago, today]
-          }
-          },
-          series: [{
-            name: '입금',
-            data: [30, 40, 35, 50, 49, 60, 70]
-          }, 
-          {
-            name: '출금',
-            data: [30, 40, 35, 50, 49, 60, 70]
-          }],
-          flag: false
-          }
+                  chart: {
+                    id: 'vuechart-example'
+                  },
+                  xaxis: {
+                    categories: ['1','2','3','4','5','6','7']
+                  }
+              },
+              series: [{
+                  name: '입금',
+                  data: [0, 0, 0, 0, 0, 0, 0]
+                }, 
+                {
+                  name: '출금',
+                  data: [0, 0, 0, 0, 0, 0, 0]
+              }],
+              flag: false
+              }
     },
     components: {
         LineChart,
@@ -110,11 +81,18 @@ export default {
         Reactive,
         GChart
     },
-    created(){
+    created(){      
+      this.chartOptions.xaxis.categories[6] = this.$moment().format("YYYY-MM-DD")
+      this.chartOptions.xaxis.categories[5] = this.$moment().add('day',-1).format("YYYY-MM-DD")
+      this.chartOptions.xaxis.categories[4] = this.$moment().add('day',-2).format("YYYY-MM-DD")
+      this.chartOptions.xaxis.categories[3] = this.$moment().add('day',-3).format("YYYY-MM-DD")
+      this.chartOptions.xaxis.categories[2] = this.$moment().add('day',-4).format("YYYY-MM-DD")
+      this.chartOptions.xaxis.categories[1] = this.$moment().add('day',-5).format("YYYY-MM-DD")
+      this.chartOptions.xaxis.categories[0] = this.$moment().add('day',-6).format("YYYY-MM-DD")      
+      
       const URI = 'http://172.30.1.46:8091/mainWeeklyCount'
         this.$axios.post(URI)
-        .then((result) => {
-            console.log(result)             
+        .then((result) => {            
             this.Today = result.data.Today
             this.DayAgo = result.data.DayAgo
             this.TwoDayAgo = result.data.TwoDayAgo

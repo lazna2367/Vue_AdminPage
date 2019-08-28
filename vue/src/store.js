@@ -5,7 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:{
-        items:[]
+        items:[],
+        web3: {
+            isInjected: false,
+            web3Instance: null,
+            networkId: null,
+            coinbase: null,
+            balance: null,
+            error: null
+        },
+        contractInstance: null,
     },
     getters: {
 
@@ -14,8 +23,7 @@ export default new Vuex.Store({
 
     },
     actions:{
-        updateClick(){
-            console.log('도니?2');
+        updateClick(){            
             const baseURI = 'http://172.30.1.46:8091/depositList'
             this.$axios.post(`${baseURI}`)
             .then((result) => {          

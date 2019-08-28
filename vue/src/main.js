@@ -12,7 +12,9 @@ import axios from 'axios'
 import store from './store'
 import VueApexCharts from 'vue-apexcharts'
 import VueGoogleCharts from 'vue-google-charts'
+
 import moment from 'moment'
+import Web3 from 'web3'
 
 // todo
 // cssVars()
@@ -27,6 +29,10 @@ Vue.use(VueGoogleCharts)
 
 Vue.use(moment)
 Vue.prototype.$moment = moment
+
+Vue.use(Web3)
+Vue.prototype.$web3 = Web3
+
 
 /* eslint-disable no-new */
 new Vue({

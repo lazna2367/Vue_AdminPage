@@ -59,8 +59,7 @@ export default {
         'id' : sessionStorage.getItem('id') , 
         'token' : sessionStorage.getItem('token')
         })
-        .then((result) => {
-        console.log(result)
+        .then((result) => {        
         if(result.data == 'WARING'){        
             this.$router.push('/loginPage')
         }
@@ -71,16 +70,10 @@ export default {
     this.axiosload()
   },
   methods:{
-    // axiosload() {
-    //   console.log('도니?1');
-    //   this.$store.dispatch('updateClick')
-    //   console.log(this.$store.state.items)
-    // }
     axiosload() {
       const baseURI = 'http://172.30.1.46:8091/withdrawCheckList'
       this.$axios.post(`${baseURI}`)
-      .then((result) => {
-        console.log(result) 
+      .then((result) => {        
         if(result.data != null){
           this.items = result.data      
         } else if(result.data == null){

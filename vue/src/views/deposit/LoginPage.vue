@@ -56,16 +56,13 @@ export default {
       const baseURI = 'http://172.30.1.46:8091/login'
       
       this.$axios.post(baseURI , this.user)
-      .then((result) => {
-        console.log(result)
-        this.resultToken = result.data.Token
-        console.log(this.resultToken)
+      .then((result) => {        
+        this.resultToken = result.data.Token        
         if(this.resultToken == undefined){
           this.resultFail = result.data
           if(this.resultFail == 'No ID'){
             this.alert.show = true
-            this.alert.Msg = '아이디를 찾을 수 없습니다.'
-            console.log(this.alert.show)
+            this.alert.Msg = '아이디를 찾을 수 없습니다.'            
             //alert('아이디를 찾을 수 없습니다.')
           }else if (this.resultFail == 'Miss PW'){
             this.alert.show = true

@@ -13,12 +13,34 @@
         <b-dropdown v-if="data.item.Confirm == 'not'" size="sm" id="ddown_secondary" variant="secondary" class="m-1" text="미확인">        
           <b-dropdown-item @click="onClick(data.item.Id,'not','not')">미확인</b-dropdown-item>
           <b-dropdown-item @click="onClick(data.item.Id,'pending','not')">보류</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">확인</b-dropdown-item>
+          <b-dropdown-item @click="onConfirmed(
+            data.item.Id,
+            'confirmed',
+            'not',
+            data.item.Wallet.Wallet_address,
+            data.item.Base_unit,
+            data.item.Base_amount,
+            data.item.Target_unit,
+            data.item.Target_amount,
+            data.item.Rate_by_base,
+            data.item.Payout_account.Transaction
+            )">확인</b-dropdown-item>
         </b-dropdown>        
         <b-dropdown v-if="data.item.Confirm == 'pending'" size="sm" id="ddown_warning" variant="warning" class="m-1" text="대기중">        
           <b-dropdown-item @click="onClick(data.item.Id,'not','not')">미확인</b-dropdown-item>
           <b-dropdown-item @click="onClick(data.item.Id,'pending','not')">보류</b-dropdown-item>
-          <b-dropdown-item @click="onClick(data.item.Id,'confirmed','not')">확인</b-dropdown-item>
+          <b-dropdown-item @click="onConfirmed(
+            data.item.Id,
+            'confirmed',
+            'not',
+            data.item.Wallet.Wallet_address,
+            data.item.Base_unit,
+            data.item.Base_amount,
+            data.item.Target_unit,
+            data.item.Target_amount,
+            data.item.Rate_by_base,
+            data.item.Payout_account.Transaction
+            )">확인</b-dropdown-item>
         </b-dropdown>
       </template>
     </b-table>
@@ -101,8 +123,7 @@ export default {
     getRowCount: function () {
       return this.items.length
     },
-    onClick(Arg_Id, Arg_confirm , Arg_complete){
-      //console.log('돈다돌아' + Id + ' / ' +  confirm + ' / ' + complete);      
+    onClick(Arg_Id, Arg_confirm , Arg_complete){      
       this.Id = Arg_Id
       this.confirm = Arg_confirm
       this.complete = Arg_complete
@@ -115,12 +136,10 @@ export default {
           "complete" : this.complete
         }
       )
-      .then((result) => {
-        console.log(result)               
+      .then((result) => {        
           const baseURI = 'http://172.30.1.46:8091/withdrawList'
           this.$axios.post(`${baseURI}`)
-          .then((result) => {            
-            console.log(result)    
+          .then((result) => {                        
             if(result.data != null){
               this.tableData = result.data      
             } else if (result.data == null){
@@ -130,6 +149,53 @@ export default {
 
         //this.axiosload()
       })
+    },
+    onConfirmed(Arg_Id, Arg_confirm, Arg_complete, Arg_WalletAddress, Arg_BaseUnit, Arg_BaseAmount, Arg_TargetUnit,
+      Arg_TargetAmount, Arg_RateByBase , Arg_Transactions){  
+
+      //데이터 전송
+      this.$axios.post('http://172.30.1.46:8091/confirm',
+      {
+        "BuySell" : "Sell",
+        "Id" : Arg_Id ,
+        "WalletAddress" : Arg_WalletAddress,
+        "BaseUnit" : Arg_BaseUnit,
+        "BaseAmount" : Arg_BaseAmount,
+        "TargetUnit" : Arg_TargetUnit,
+        "TargetAmount" : Arg_TargetAmount,
+        "RateByBase" : Arg_RateByBase,
+        "Transactions" : Arg_Transactions
+      })        
+      .then((result) => {
+        console.log(result)
+      })  
+        
+      this.Id = Arg_Id
+      this.confirm = Arg_confirm
+      this.complete = Arg_complete
+
+      const URI = 'http://172.30.1.46:8091/withdrawUpdate'
+      this.$axios.post(`${URI}`,
+        {
+          "Id" : this.Id,
+          "confirm" : this.confirm,
+          "complete" : this.complete
+        }
+      )
+      .then((result) => {        
+          const baseURI = 'http://172.30.1.46:8091/withdrawList'
+          this.$axios.post(`${baseURI}`)
+          .then((result) => {                        
+            if(result.data != null){
+              this.tableData = result.data      
+            } else if (result.data == null){
+              this.tableData = []
+            }
+          })
+
+        //this.axiosload()
+      })
+
     }
   }
 }

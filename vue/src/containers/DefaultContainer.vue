@@ -17,7 +17,7 @@
 
       <b-navbar-nav class="ml-auto">
 
-        <!-- 
+        <!--         
         <b-nav-item class="d-md-down-none">
           <i class="icon-bell"></i>
           <b-badge pill variant="danger">5</b-badge>
@@ -30,10 +30,10 @@
         </b-nav-item>
         <DefaultHeaderDropdownAccnt/>
          -->
-
+        <b-button variant="vk" class="mr-2 btn-brand" v-on:click="logoutBtn"><i class="icon-logout" style="vertical-align: unset; margin-top:-5px;"></i><span>LogOut</span></b-button>
       </b-navbar-nav>
       <!-- <AsideToggler class="d-none d-lg-block" /> -->
-      <!--<AsideToggler class="d-lg-none" mobile />-->
+      <!-- <AsideToggler class="d-lg-none" mobile /> -->
     </AppHeader>
 
     <!-- side slider -->
@@ -105,6 +105,13 @@ export default {
     },
     list () {
       return this.$route.matched.filter((route) => route.name || route.meta.label )
+    }
+  },
+  methods:{
+    logoutBtn(){
+      sessionStorage.setItem('id', null)
+      sessionStorage.setItem('token', null)
+      this.$router.push('/loginpage')
     }
   }
 }

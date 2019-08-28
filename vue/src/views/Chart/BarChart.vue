@@ -81,20 +81,10 @@ export default {
     }
   },
 
-  methods: {
-      // reload() {
-      //       const URI = 'http://172.30.1.46:8091/mainWeeklyCount'
-      //       this.$axios.post(URI)
-      //       .then((result) => {
-      //           console.log(result)             
-      //       }
-      //     )}                  
-  },
   created(){
           const URI = 'http://172.30.1.46:8091/mainWeeklyCount'
           this.$axios.post(URI)
-          .then((result) => {
-              console.log(result)    
+          .then((result) => {                
               this.Today = result.data.Today
               this.DayAgo = result.data.DayAgo
               this.TwoDayAgo = result.data.TwoDayAgo
@@ -124,8 +114,7 @@ export default {
           })
 
     // var datasetA = this.datacollection.datasets[0].data[0]
-    // datasetA.set(1)
-    // console.log(datasetA)
+    // datasetA.set(1)    
     
   }
   

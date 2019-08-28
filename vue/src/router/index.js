@@ -14,22 +14,22 @@ import Router from 'vue-router'
 // const Widgets = () => import('@/views/Widgets')
 
 // Views - Components
-const Cards = () => import('@/views/base/Cards')
-const Forms = () => import('@/views/base/Forms')
-const Switches = () => import('@/views/base/Switches')
-const Tables = () => import('@/views/base/Tables')
-const Tabs = () => import('@/views/base/Tabs')
-const Breadcrumbs = () => import('@/views/base/Breadcrumbs')
-const Carousels = () => import('@/views/base/Carousels')
-const Collapses = () => import('@/views/base/Collapses')
-const Jumbotrons = () => import('@/views/base/Jumbotrons')
-const ListGroups = () => import('@/views/base/ListGroups')
-const Navs = () => import('@/views/base/Navs')
-const Navbars = () => import('@/views/base/Navbars')
-const Paginations = () => import('@/views/base/Paginations')
-const Popovers = () => import('@/views/base/Popovers')
-const ProgressBars = () => import('@/views/base/ProgressBars')
-const Tooltips = () => import('@/views/base/Tooltips')
+// const Cards = () => import('@/views/base/Cards')
+// const Forms = () => import('@/views/base/Forms')
+// const Switches = () => import('@/views/base/Switches')
+// const Tables = () => import('@/views/base/Tables')
+// const Tabs = () => import('@/views/base/Tabs')
+// const Breadcrumbs = () => import('@/views/base/Breadcrumbs')
+// const Carousels = () => import('@/views/base/Carousels')
+// const Collapses = () => import('@/views/base/Collapses')
+// const Jumbotrons = () => import('@/views/base/Jumbotrons')
+// const ListGroups = () => import('@/views/base/ListGroups')
+// const Navs = () => import('@/views/base/Navs')
+// const Navbars = () => import('@/views/base/Navbars')
+// const Paginations = () => import('@/views/base/Paginations')
+// const Popovers = () => import('@/views/base/Popovers')
+// const ProgressBars = () => import('@/views/base/ProgressBars')
+// const Tooltips = () => import('@/views/base/Tooltips')
 
 // // Views - Buttons
 // const StandardButtons = () => import('@/views/buttons/StandardButtons')
@@ -69,8 +69,13 @@ const WithdrawCheckList = () => import('@/views/withdraw/WithdrawCheckList')
 const WithdrawConfirmList = () => import('@/views/withdraw/WithdrawConfirmList')
 const MainPage = () => import('@/views/deposit/MainPage')
 
+const Web3js = () => import('@/views/deposit/Web3jsTest.vue')
 
-const VueChartJS = () => import('@/views/Chart/VueChartJS')
+const TestView = () => import('@/views/deposit/TestView.vue')
+const Test2 = () => import('@/views/deposit/test2.vue')
+
+
+//const VueChartJS = () => import('@/views/Chart/VueChartJS')
 
 Vue.use(Router)
 
@@ -143,96 +148,96 @@ export default new Router({
         //     },
         //   ]
         // },
-        {
-          path: 'base',
-          redirect: '/base/cards',
-          name: 'Base',
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: 'cards',
-              name: 'Cards',
-              component: Cards
-            },
-            {
-              path: 'forms',
-              name: 'Forms',
-              component: Forms
-            },
-            {
-              path: 'switches',
-              name: 'Switches',
-              component: Switches
-            },
-            {
-              path: 'tables',
-              name: 'Tables',
-              component: Tables
-            },
-            {
-              path: 'tabs',
-              name: 'Tabs',
-              component: Tabs
-            },
-            {
-              path: 'breadcrumbs',
-              name: 'Breadcrumbs',
-              component: Breadcrumbs
-            },
-            {
-              path: 'carousels',
-              name: 'Carousels',
-              component: Carousels
-            },
-            {
-              path: 'collapses',
-              name: 'Collapses',
-              component: Collapses
-            },
-            {
-              path: 'jumbotrons',
-              name: 'Jumbotrons',
-              component: Jumbotrons
-            },
-            {
-              path: 'list-groups',
-              name: 'List Groups',
-              component: ListGroups
-            },
-            {
-              path: 'navs',
-              name: 'Navs',
-              component: Navs
-            },
-            {
-              path: 'navbars',
-              name: 'Navbars',
-              component: Navbars
-            },
-            {
-              path: 'paginations',
-              name: 'Paginations',
-              component: Paginations
-            },
-            {
-              path: 'popovers',
-              name: 'Popovers',
-              component: Popovers
-            },
-            {
-              path: 'progress-bars',
-              name: 'Progress Bars',
-              component: ProgressBars
-            },
-            {
-              path: 'tooltips',
-              name: 'Tooltips',
-              component: Tooltips
-            }
-          ]
-        },
+        // {
+        //   path: 'base',
+        //   redirect: '/base/cards',
+        //   name: 'Base',
+        //   component: {
+        //     render (c) { return c('router-view') }
+        //   },
+        //   children: [
+        //     {
+        //       path: 'cards',
+        //       name: 'Cards',
+        //       component: Cards
+        //     },
+        //     {
+        //       path: 'forms',
+        //       name: 'Forms',
+        //       component: Forms
+        //     },
+        //     {
+        //       path: 'switches',
+        //       name: 'Switches',
+        //       component: Switches
+        //     },
+        //     {
+        //       path: 'tables',
+        //       name: 'Tables',
+        //       component: Tables
+        //     },
+        //     {
+        //       path: 'tabs',
+        //       name: 'Tabs',
+        //       component: Tabs
+        //     },
+        //     {
+        //       path: 'breadcrumbs',
+        //       name: 'Breadcrumbs',
+        //       component: Breadcrumbs
+        //     },
+        //     {
+        //       path: 'carousels',
+        //       name: 'Carousels',
+        //       component: Carousels
+        //     },
+        //     {
+        //       path: 'collapses',
+        //       name: 'Collapses',
+        //       component: Collapses
+        //     },
+        //     {
+        //       path: 'jumbotrons',
+        //       name: 'Jumbotrons',
+        //       component: Jumbotrons
+        //     },
+        //     {
+        //       path: 'list-groups',
+        //       name: 'List Groups',
+        //       component: ListGroups
+        //     },
+        //     {
+        //       path: 'navs',
+        //       name: 'Navs',
+        //       component: Navs
+        //     },
+        //     {
+        //       path: 'navbars',
+        //       name: 'Navbars',
+        //       component: Navbars
+        //     },
+        //     {
+        //       path: 'paginations',
+        //       name: 'Paginations',
+        //       component: Paginations
+        //     },
+        //     {
+        //       path: 'popovers',
+        //       name: 'Popovers',
+        //       component: Popovers
+        //     },
+        //     {
+        //       path: 'progress-bars',
+        //       name: 'Progress Bars',
+        //       component: ProgressBars
+        //     },
+        //     {
+        //       path: 'tooltips',
+        //       name: 'Tooltips',
+        //       component: Tooltips
+        //     }
+        //   ]
+        // },
         // {
         //   path: 'buttons',
         //   redirect: '/buttons/standard-buttons',
@@ -356,10 +361,26 @@ export default new Router({
           component: MainPage
         },
         {
-          path: '/chartjs',
-          name: 'VueChartJS',
-          component: VueChartJS
+          path: '/web3js',
+          name: 'Web3js',
+          component: Web3js
+        },
+        {
+          path: '/testview',
+          name: 'TestView',
+          component: TestView
+        },
+        {
+          path: '/test2',
+          name: 'Test2',
+          component: Test2
         }
+
+        // {
+        //   path: '/chartjs',
+        //   name: 'VueChartJS',
+        //   component: VueChartJS
+        // }
 
       ]
     },

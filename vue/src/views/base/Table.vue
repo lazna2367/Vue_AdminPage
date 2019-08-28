@@ -101,8 +101,7 @@ export default {
     getRowCount: function () {
       return this.items.length
     },
-    onClick(Arg_Id, Arg_confirm , Arg_complete){
-      //console.log('돈다돌아' + Id + ' / ' +  confirm + ' / ' + complete);      
+    onClick(Arg_Id, Arg_confirm , Arg_complete){      
       this.Id = Arg_Id
       this.confirm = Arg_confirm
       this.complete = Arg_complete
@@ -115,12 +114,10 @@ export default {
           "complete" : this.complete
         }
       )
-      .then((result) => {
-        console.log(result)               
+      .then((result) => {               
           const baseURI = 'http://172.30.1.46:8091/depositList'
           this.$axios.post(`${baseURI}`)
-          .then((result) => {            
-            console.log(result)    
+          .then((result) => {                        
             if(result.data != null){
               this.tableData = result.data      
             } else if (result.data == null){
